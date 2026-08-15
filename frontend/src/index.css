@@ -715,13 +715,62 @@ button {
   }
 }
 
+/* Task action buttons only reveal on :hover — useless on touch devices
+   since there's no hover state, so force them visible there. */
+@media (hover: none) {
+  .task__actions {
+    opacity: 1;
+  }
+}
+
 @media (max-width: 640px) {
   .topbar {
     flex-wrap: wrap;
     padding: 14px 16px;
+    gap: 10px;
   }
+
+  .board-title {
+    order: 3;
+    width: 100%;
+    white-space: normal;
+  }
+
+  .topbar__spacer {
+    display: none;
+  }
+
+  .toolbar {
+    order: 4;
+    width: 100%;
+  }
+
+  .toolbar .search-input {
+    min-width: 0;
+    flex: 1 1 140px;
+  }
+
+  .toolbar .select {
+    flex: 0 1 auto;
+  }
+
   .board-scroll {
     padding: 16px;
+    scroll-snap-type: x mandatory;
+  }
+
+  .board {
+    min-height: calc(100vh - 260px);
+  }
+
+  .column {
+    width: 84vw;
+    max-height: calc(100vh - 230px);
+    scroll-snap-align: start;
+  }
+
+  .modal {
+    padding: 18px;
   }
 }
 
